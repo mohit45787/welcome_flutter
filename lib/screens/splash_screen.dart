@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:welcomeflutter/utils/constants.dart';
-//import 'package:welcomeflutter/utils/Constants.dart';
 import 'package:welcomeflutter/utils/navigators.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -11,12 +11,25 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  bool _isloggedin=false;
   @override
   void initState() {
     // TODO: implement initState
 
     super.initState();
-   Timer(Duration(seconds: 3), () => Navigators.goToLogin(context)); //splash timer for 3 secounds
+    _loadsharedpref();
+
+  }
+
+  _loadsharedpref() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      if(prefs.getBool('isloggedin')??false){
+        Timer(Duration(seconds: 3), () => Navigators.goToHome(context));
+      }else{
+        Timer(Duration(seconds: 3), () => Navigators.goToLogin(context));
+      }//splash timer for 3 secounds
+    });
   }
 
   @override
@@ -26,10 +39,11 @@ class _SplashScreenState extends State<SplashScreen> {
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color: Colors.orangeAccent),
+            decoration: BoxDecoration(color: Colors.white),
             child: Image(
-                image: NetworkImage('https://i.pinimg.com/564x/53/5d/5a/535d5a3cb54b463057fc76c44ef56393.jpg')  //Fetch Image From NetworkURL
-            ),
+                image: NetworkImage(
+                    'https://i.pinimg.com/564x/53/5d/5a/535d5a3cb54b463057fc76c44ef56393.jpg') //Fetch Image From NetworkURL
+                ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -41,29 +55,12 @@ class _SplashScreenState extends State<SplashScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircleAvatar(
-                        backgroundColor: Colors.black,
-                        radius: 50.0,
-
-                        child: Image(
-                          image: AssetImage('assets/samsung_logo.png'),  //Fetch Image From Assets
-                          color: Colors.white
-                        )
-                        /*child: Icon(
-                          Icons.add_box,
-                          color: Colors.white,
-                          size: 70.0,
-                        ),*/
-                      ),
+                          backgroundImage: new NetworkImage('https://scontent-del1-1.xx.fbcdn.net/v/t1.0-9/95240835_3691097090965455_5920649517463502848_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=TloDY4q6fK8AX9zt0jn&_nc_ht=scontent-del1-1.xx&oh=baa08a0f6a7580d01ba3991b6c4fed45&oe=5EFDC4A5'),
+                          radius: 50.0,
+                          ),
                       Padding(
                         padding: EdgeInsets.only(top: 30),
                       ),
-                      /*Text(
-                        "samsung",//Constants.name
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 34.0),
-                      )*/
                     ],
                   ),
                 ),
@@ -73,7 +70,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    /*CircularProgressIndicator(),*/
                     Padding(
                       padding: EdgeInsets.only(top: 180.0),
                     ),

@@ -60,26 +60,29 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             /*SizedBox(height: 170),*/
             Container(
-              height: 170,
-              padding: EdgeInsets.all(10),
+              child: Image(
+                fit: BoxFit.fill,
+                image: NetworkImage('https://lh3.googleusercontent.com/proxy/U2rkfeQ3fRTRQrQEATXPi1_PlrNOdDepJRsAfSjKz0kNuwno_2Ijqv8f6HQceliGS24VdNUH1mJDW_MI06rsGArCkW8oijTdcxSvP4nJOklT8EPrfCs'),
+              ),
+              padding: EdgeInsets.all(0),
               decoration: new BoxDecoration(
                   color: Colors.black,
                   borderRadius: new BorderRadius.only(
                       bottomRight: Radius.circular(0),
-                      bottomLeft: Radius.circular(190))),
+                      bottomLeft: Radius.circular(0))),
             ),
-            SizedBox(height: 10),
+            /*SizedBox(height: 0),
             Container(
-                height: 100,
+                height: 50,
                 decoration: new BoxDecoration(color: Colors.black),
                 child: ListView.builder(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(4),
                     itemCount: entries.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
-                        height: 50,
-                        width: 100,
+                        height: 25,
+                        width: 50,
                         color: Colors.amber[colorCodes[index]],
                         child: Center(
                             child: Image(
@@ -87,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                         )),
                       );
                     })),
-            SizedBox(height: 10),
+            SizedBox(height: 10),*/
             Container(
               child: FutureBuilder(
                 future: _getUsers(),

@@ -14,10 +14,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
-
     super.initState();
     _loadsharedpref();
-
   }
 
   _loadsharedpref() async {
@@ -40,6 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Container(
             decoration: BoxDecoration(color: Colors.white),
             child: Image(
+              fit: BoxFit.fill,
                 image: NetworkImage(
                     'https://i.pinimg.com/564x/53/5d/5a/535d5a3cb54b463057fc76c44ef56393.jpg') //Fetch Image From NetworkURL
                 ),

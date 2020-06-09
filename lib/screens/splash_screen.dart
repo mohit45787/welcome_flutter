@@ -11,7 +11,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  bool _isloggedin=false;
   @override
   void initState() {
     // TODO: implement initState

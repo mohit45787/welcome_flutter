@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:welcomeflutter/screens/home/home_screen.dart';
-import 'package:welcomeflutter/screens/login_screen.dart';
+import 'package:welcomeflutter/screens/auth_module/login_screen.dart';
 import 'package:welcomeflutter/screens/signup_screen.dart';
 
 class Navigators {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:welcomeflutter/utils/navigators.dart';
 
 class HomeDrawer extends StatelessWidget {
   @override
@@ -18,12 +19,17 @@ class HomeDrawer extends StatelessWidget {
               "mohit@infostride.com",
             ),
             currentAccountPicture: new CircleAvatar(
-              backgroundImage: new NetworkImage('https://scontent-del1-1.xx.fbcdn.net/v/t1.0-9/95240835_3691097090965455_5920649517463502848_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=TloDY4q6fK8AX9zt0jn&_nc_ht=scontent-del1-1.xx&oh=baa08a0f6a7580d01ba3991b6c4fed45&oe=5EFDC4A5'),
+              backgroundImage: new NetworkImage(
+                  'https://scontent-del1-1.xx.fbcdn.net/v/t1.0-9/95240835_3691097090965455_5920649517463502848_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=TloDY4q6fK8AX9zt0jn&_nc_ht=scontent-del1-1.xx&oh=baa08a0f6a7580d01ba3991b6c4fed45&oe=5EFDC4A5'),
             ),
           ),
           new ListTile(
+            onTap: (){
+              ///Provider State screen
+              Navigators.goToProviderState(context);
+            },
             title: Text(
-              "Profile",
+              "Provider State",
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14.0),
             ),
             leading: Icon(

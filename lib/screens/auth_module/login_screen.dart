@@ -22,80 +22,88 @@ class _LoginScreenState extends State<LoginScreen> {
     return WillPopScope(
         onWillPop: _onBackPressed,
         child: Scaffold(
-            body: Padding(
-                padding: EdgeInsets.all(10),
-                child: ListView(
-                  children: <Widget>[
-                    SizedBox(height: 110),
-                    Container(
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          'Sign in',
-                          style: TextStyle(fontSize: 20),
-                        )),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: TextField(
-                        controller: nameController,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'User Name',
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      child: TextField(
-                        obscureText: true,
-                        controller: passwordController,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Password',
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 60),
-                    FlatButton(
-                      onPressed: () {
-                        //forgot password screen
-                      },
-                      textColor: Colors.black,
-                      child: Text('Forgot Password'),
-                    ),
-                    Container(
-                        height: 50,
-                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: RaisedButton(
-                          textColor: Colors.white,
-                          color: Colors.black,
-                          child: Text('Login'),
-                          onPressed: () {
-                            print(nameController.text);
-                            print(passwordController.text);
-                          },
-                        )),
-                    SizedBox(height: 20),
-                    Container(
-                        child: Row(
+            body: Stack(
+              fit: StackFit.expand,
+              children: <Widget>[
+                Image(image: NetworkImage('https://i.pinimg.com/564x/53/5d/5a/535d5a3cb54b463057fc76c44ef56393.jpg'),
+                  fit: BoxFit.fill,
+                ),
+                Padding(
+                    padding: EdgeInsets.all(10),
+                    child: ListView(
                       children: <Widget>[
-                        Text('Does not have account?'),
-                        FlatButton(
-                          textColor: Colors.black,
-                          child: Text(
-                            'Sign up',
-                            style: TextStyle(fontSize: 20),
+                        SizedBox(height: 110),
+                        Container(
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              'Sign in',
+                              style: TextStyle(fontSize: 20),
+                            )),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: TextField(
+                            controller: nameController,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'User Name',
+                            ),
                           ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                          child: TextField(
+                            obscureText: true,
+                            controller: passwordController,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Password',
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 60),
+                        FlatButton(
                           onPressed: () {
-                            //signup screen
-                            Navigators.goToSignup(this.context);
+                            //forgot password screen
                           },
-                        )
+                          textColor: Colors.black,
+                          child: Text('Forgot Password'),
+                        ),
+                        Container(
+                            height: 50,
+                            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                            child: RaisedButton(
+                              textColor: Colors.white,
+                              color: Colors.black,
+                              child: Text('Login'),
+                              onPressed: () {
+                                print(nameController.text);
+                                print(passwordController.text);
+                              },
+                            )),
+                        SizedBox(height: 20),
+                        Container(
+                            child: Row(
+                              children: <Widget>[
+                                Text('Does not have account?'),
+                                FlatButton(
+                                  textColor: Colors.black,
+                                  child: Text(
+                                    'Sign up',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  onPressed: () {
+                                    ///signup screen
+                                    Navigators.goToSignup(this.context);
+                                  },
+                                )
+                              ],
+                              mainAxisAlignment: MainAxisAlignment.center,
+                            )),
                       ],
-                      mainAxisAlignment: MainAxisAlignment.center,
                     )),
-                  ],
-                ))));
+              ],
+            )));
   }
 
   //region Backpressed

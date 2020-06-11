@@ -8,8 +8,8 @@ import 'package:welcomeflutter/widgets/common_drawer.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
-  var deviceSize;
-  ///////////hit api
+
+  ///hit api
   Future<List<Data>> _getUsers() async {
     var data = await http.get("https://reqres.in/api/users?page=2");
     //Map<String, dynamic> jsonDataObject = jsonDecode(data.body);
@@ -24,8 +24,8 @@ class HomeScreen extends StatelessWidget {
     print(dataItem.length);
     return dataItem;
   }
-  //////////////////
 
+  ///static list
   final List<String> entries = <String>[
     'https://bootdey.com/img/Content/avatar/avatar7.png',
     'https://bootdey.com/img/Content/avatar/avatar7.png',
@@ -38,6 +38,7 @@ class HomeScreen extends StatelessWidget {
     'https://bootdey.com/img/Content/avatar/avatar7.png',
     'https://bootdey.com/img/Content/avatar/avatar7.png'
   ];
+  ///static list for background color
   final List<int> colorCodes = <int>[
     600,
     500,
@@ -62,7 +63,7 @@ class HomeScreen extends StatelessWidget {
             Container(
               child: Image(
                 fit: BoxFit.fill,
-                image: NetworkImage('https://lh3.googleusercontent.com/proxy/U2rkfeQ3fRTRQrQEATXPi1_PlrNOdDepJRsAfSjKz0kNuwno_2Ijqv8f6HQceliGS24VdNUH1mJDW_MI06rsGArCkW8oijTdcxSvP4nJOklT8EPrfCs'),
+                image: NetworkImage('https://www.uniquefbcovers.com/download/Clouds%20HD%20Fb%20Cover.jpg'),
               ),
               padding: EdgeInsets.all(0),
               decoration: new BoxDecoration(
@@ -117,7 +118,6 @@ class HomeScreen extends StatelessWidget {
                             title: Text(snapshot.data[index].first_name),
                             subtitle: Text(snapshot.data[index].email),
                             onTap: (){
-
                               Navigator.push(context,
                                   new MaterialPageRoute(builder: (context) => DetailPage(snapshot.data[index]))
                               );
@@ -138,7 +138,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -168,7 +167,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-
+///Detail page from list
 class DetailPage extends StatelessWidget {
 
   final Data user;
@@ -184,14 +183,15 @@ class DetailPage extends StatelessWidget {
     );
   }
 }
-class User {
 
+///User model
+class User {
   final int id;
   final String first_name;
   final String last_name;
   final String email;
   final String avatar;
 
+  ///user constructure
   User(this.id, this.first_name, this.last_name, this.email, this.avatar);
-
 }
